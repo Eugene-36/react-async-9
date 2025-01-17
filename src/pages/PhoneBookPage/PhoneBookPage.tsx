@@ -5,8 +5,10 @@ import { fetchContacts } from '../../redux/contacts/operations';
 import { selectIsLoading } from '../../redux/contacts/selectors';
 // CONTACT CREATION COMPONENTS
 import { AddContactForm } from '../../components/AddContactForm/AddContactForm';
+import { SearchBox } from '../../SearchBox.tsx';
 import { ContactList } from '../../ContactList';
-
+import { motion } from 'framer-motion';
+import { animations } from '../../animation.tsx';
 export default function ContactBookPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -18,16 +20,24 @@ export default function ContactBookPage() {
   return (
     <>
       <DocumentTitle>Your PhoneBook</DocumentTitle>
+      <motion.div
+        variants={animations}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        className='home component'
+      >
+        <section>
+          <AddContactForm />
+        </section>
 
-      <section>
-        <AddContactForm />
-      </section>
-      {/* {isLoading && !error && <b>Request in progress...</b>} */}
-      <section>{/* <SearchBox /> */}</section>
-      <section>
-        <ContactList />
-      </section>
-      <section>{/* <RegisterForm /> */}</section>
+        <section>
+          <SearchBox />
+        </section>
+        <section>
+          <ContactList />
+        </section>
+      </motion.div>
     </>
   );
 }

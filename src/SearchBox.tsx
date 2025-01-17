@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectNameFilter } from './redux/filters/filtersSlice';
 import { selectValue } from './redux/filters/selectors';
 
-const SearchBox = () => {
+export const SearchBox = () => {
   const dispatch = useAppDispatch();
   const searchValue = useSelector(selectValue);
   return (

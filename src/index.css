@@ -97,12 +97,30 @@ form .input-wrapper input:not(:last-child) {
   margin: 10px 0 0 0;
 }
 .singleCard {
+  width: 150px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
+  cursor: pointer;
 }
-.singleCard:not(:last-child) {
-  margin: 0 0 20px 0;
+.search-input input {
+  width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.search-input {
+  display: flex;
+  align-items: center;
+}
+
+.list-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 section:not(:last-child) {
   padding: 0 0 50px 0;

@@ -10,7 +10,7 @@ type ContactList = {
 export const ContactList = () => {
   const searchValue = useSelector(selectFilteredContacts);
   return (
-    <div>
+    <div className='list-container'>
       {searchValue.map(({ id, name, number }: ContactList) => (
         <Contact key={id} name={name} number={number} contactId={id} />
       ))}
