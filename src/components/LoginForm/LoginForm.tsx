@@ -1,67 +1,35 @@
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import s from './LoginForm.module.css';
 import * as Yup from 'yup';
-import './RegisterForm.module.css';
-
 // FUNCTIONS
-import { register } from '../redux/auth/operations';
+import { login } from '../../redux/auth/operations';
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('Full Name is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string()
-    .min(7, 'Password must be at least 7 characters')
-    .required('Password is required'),
+  email: Yup.string().required('Email is required'),
+  password: Yup.string().required('Password is required'),
 });
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
-const RegistrationForm = () => {
+
+const LoginForm = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      dispatch(register(values));
+      dispatch(login(values));
       resetForm();
-      console.log(values);
+      console.log('login data', values);
     },
   });
 
   return (
     <>
-      <div className='form-container' style={styles.container}>
-        <h1 className='headline'>Registration Form </h1>
+      <div className={s.formContainer}>
+        <h1 className='headline'>Login Form </h1>
         <form onSubmit={formik.handleSubmit}>
-          <div>
-            <label htmlFor='fullName'>Full Name</label>
-            <input
-              type='text'
-              id='fullName'
-              name='name'
-              onChange={formik.handleChange}
-              value={formik.values.name}
-            />
-            {formik.touched.name && formik.errors.name ? (
-              <div className='error-message'>{formik.errors.name}</div>
-            ) : null}
-          </div>
-
           <div>
             <label htmlFor='email'>Email</label>
             <input
@@ -91,7 +59,7 @@ const RegistrationForm = () => {
           </div>
 
           <div>
-            <button type='submit'>Register</button>
+            <button type='submit'>Login</button>
           </div>
         </form>
       </div>
@@ -99,4 +67,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;

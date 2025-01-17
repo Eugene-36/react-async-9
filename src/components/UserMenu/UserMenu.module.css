@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+.wrapper p {
+  margin: 0 10px 0 0;
+}

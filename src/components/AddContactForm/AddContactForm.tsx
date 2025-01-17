@@ -1,7 +1,8 @@
-import { addContact } from './redux/contacts/operations';
-import { useAppDispatch } from './redux/hooks';
-
-const ContactForm = () => {
+import { addContact } from '../../redux/contacts/operations';
+import { useAppDispatch } from '../../redux/hooks';
+import s from './AddContactForm.module.css';
+//AddContactForm
+export const AddContactForm = () => {
   const dispatch = useAppDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,7 +16,8 @@ const ContactForm = () => {
     form.reset();
   };
   return (
-    <div>
+    <div className={s.container}>
+      <h2>Add New Contact</h2>
       <form onSubmit={handleSubmit}>
         <div className='input-wrapper'>
           <input
@@ -37,4 +39,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default AddContactForm;

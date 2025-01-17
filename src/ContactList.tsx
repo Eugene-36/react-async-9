@@ -7,7 +7,7 @@ type ContactList = {
   name: string;
   number: string;
 };
-const ContactList = () => {
+export const ContactList = () => {
   const searchValue = useSelector(selectFilteredContacts);
   return (
     <div>
