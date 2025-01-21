@@ -1,9 +1,11 @@
 import { addContact } from '../../redux/contacts/operations';
 import { useAppDispatch } from '../../redux/hooks';
+import { useToast } from '../../components/ToastProvider';
 import s from './AddContactForm.module.css';
 //AddContactForm
 export const AddContactForm = () => {
   const dispatch = useAppDispatch();
+  const showToast = useToast();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,6 +15,7 @@ export const AddContactForm = () => {
         number: event.target.elements.number.value,
       })
     );
+    showToast('Success! New contact added', 'success');
     form.reset();
   };
   return (

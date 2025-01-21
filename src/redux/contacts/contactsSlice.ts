@@ -1,10 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './operations';
 interface Contact {
   createdAt: string;
   name: string;
   number: string;
   id: string;
+  contacts: string;
 }
 interface ContactsState {
   items: Contact[];
@@ -64,7 +70,25 @@ const contactsSlice = createSlice({
           state.items.splice(index, 1);
         }
       )
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+
+      // ==================
+      .addCase(updateContact.pending, handlePending)
+      .addCase(
+        updateContact.fulfilled,
+        (state, action: PayloadAction<Contact>) => {
+          state.isLoading = false;
+          state.error = null;
+          console.log('action-update', action);
+          state.items.map((el) => {
+            if (el.id === action.payload.id) {
+              el.name = action.payload.name;
+              el.contacts = action.payload.contacts;
+            }
+          });
+        }
+      )
+      .addCase(updateContact.rejected, handleRejected);
   },
 });
 

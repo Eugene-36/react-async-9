@@ -9,6 +9,7 @@ import App from './App.jsx';
 // провайдер
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
+import { ToastProvider } from './components/ToastProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <HelmetProvider>
-            <App />
+            <ToastProvider>
+              <App />
+            </ToastProvider>
           </HelmetProvider>
         </BrowserRouter>
       </PersistGate>

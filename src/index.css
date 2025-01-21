@@ -94,14 +94,19 @@ form .input-wrapper input:not(:last-child) {
   align-items: baseline;
 }
 .buttonBlock button {
-  margin: 10px 0 0 0;
+  margin: 0 10px 0 0;
 }
 .singleCard {
-  width: 150px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
   cursor: pointer;
+}
+.singleCard .btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 0 0;
 }
 .search-input input {
   width: 500px;

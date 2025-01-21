@@ -5,14 +5,14 @@ import Contact from './Contact.js';
 type ContactList = {
   id: number;
   name: string;
-  number: string;
+  contacts: string;
 };
 export const ContactList = () => {
   const searchValue = useSelector(selectFilteredContacts);
   return (
     <div className='list-container'>
-      {searchValue.map(({ id, name, number }: ContactList) => (
-        <Contact key={id} name={name} number={number} contactId={id} />
+      {searchValue.map(({ id, name, contacts }: ContactList) => (
+        <Contact key={id} name={name} contacts={contacts} contactId={id} />
       ))}
     </div>
   );
