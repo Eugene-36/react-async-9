@@ -1,7 +1,24 @@
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   margin-bottom: 16px;
   border-bottom: 1px solid #2a363b;
+  background: #ffff;
+  /* ============== */
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  width: 100%;
+  height: 90px;
+}
+
+.header .navBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1167px;
+  width: 100%;
 }

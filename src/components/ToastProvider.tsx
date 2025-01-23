@@ -1,12 +1,14 @@
 // ToastProvider.js
 import React, { createContext, useContext } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
+interface ToastContext {
+  (message: string, type?: string): void;
+}
 
-// Create a context for the toast function
-const ToastContext = createContext(null);
+const ToastContext = createContext<ToastContext | null>(null);
 
-export const ToastProvider = ({ children }) => {
-  const showToast = (message, type = 'success') => {
+export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
+  const showToast: ToastContext = (message, type = 'success') => {
     switch (type) {
       case 'success':
         toast.success(message);
@@ -31,5 +33,11 @@ export const ToastProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the toast function
-export const useToast = () => useContext(ToastContext);
+// Custom hook to access the context
+export const useToast = (): ToastContext => {
+  const context = useContext(ToastContext);
+  if (!context) {
+    throw new Error('useToast must be used within a ToastProvider');
+  }
+  return context;
+};

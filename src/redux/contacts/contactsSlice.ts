@@ -79,7 +79,6 @@ const contactsSlice = createSlice({
         (state, action: PayloadAction<Contact>) => {
           state.isLoading = false;
           state.error = null;
-          console.log('action-update', action);
           state.items.map((el) => {
             if (el.id === action.payload.id) {
               el.name = action.payload.name;

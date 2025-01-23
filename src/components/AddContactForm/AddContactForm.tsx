@@ -3,6 +3,8 @@ import { useAppDispatch } from '../../redux/hooks';
 import { useToast } from '../../components/ToastProvider';
 import s from './AddContactForm.module.css';
 //AddContactForm
+// Define a type for MyType
+
 export const AddContactForm = () => {
   const dispatch = useAppDispatch();
   const showToast = useToast();
@@ -12,7 +14,7 @@ export const AddContactForm = () => {
     dispatch(
       addContact({
         name: event.target.elements.text.value,
-        number: event.target.elements.number.value,
+        contacts: event.target.elements.contacts.value,
       })
     );
     showToast('Success! New contact added', 'success');
@@ -32,7 +34,7 @@ export const AddContactForm = () => {
           <input
             required
             type='text'
-            name='number'
+            name='contacts'
             placeholder='Write your number'
           />
         </div>

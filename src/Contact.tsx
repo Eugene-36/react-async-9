@@ -1,5 +1,5 @@
 import { useAppDispatch } from './redux/hooks';
-import { deleteContact, updateContact } from './redux/contacts/operations';
+import { deleteContact } from './redux/contacts/operations';
 import { useToast } from './components/ToastProvider';
 import { ModalComponent } from './components/EditModal/EditModal';
 
@@ -32,7 +32,6 @@ const Contact = ({ name, contacts, contactId }: Props) => {
           </button>
           <ModalComponent currentId={contactId} />
         </div>
-        {/* <button onClick={() => dispatch(updateContact(contactId))}>Edit</button> */}
       </div>
     </div>
   );

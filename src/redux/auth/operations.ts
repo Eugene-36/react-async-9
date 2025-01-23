@@ -1,6 +1,14 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+interface AuthState {
+  token: string | null;
+}
+
+interface RootState {
+  auth: AuthState;
+}
+
 const apiAuth = axios.create({
   baseURL: 'https://task-manager-api.goit.global/',
 });
@@ -10,7 +18,7 @@ const setAuthHeader = (token) => {
   apiAuth.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 //Add JWT
-const clearAuthHeader = (token) => {
+const clearAuthHeader = () => {
   apiAuth.defaults.headers.common.Authorization = '';
 };
 
@@ -18,12 +26,9 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      console.log('credentials', credentials);
-
       const res = await apiAuth.post('/users/signup', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
-      console.log('res.data', res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -33,10 +38,8 @@ export const register = createAsyncThunk(
 // =================
 export const login = createAsyncThunk(
   'auth/login',
-  async (credentials, thunkAPI) => {
+  async (credentials: object, thunkAPI) => {
     try {
-      console.log('credentials', credentials);
-
       const res = await apiAuth.post('/users/login', credentials);
       setAuthHeader(res.data.token);
       return res.data;
@@ -50,8 +53,6 @@ export const login = createAsyncThunk(
 export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
     const res = await apiAuth.post('/users/logout');
-    console.log('res log out ', res);
-
     clearAuthHeader();
     return res.data;
   } catch (error) {
@@ -62,9 +63,8 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
-    const state = thunkAPI.getState();
+    const state = thunkAPI.getState() as RootState;
     const persistedToken = state.auth.token;
-    console.log('persistedToken', persistedToken);
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
       return thunkAPI.rejectWithValue('Unable to fetch user');

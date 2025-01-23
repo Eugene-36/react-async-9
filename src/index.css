@@ -130,3 +130,19 @@ form .input-wrapper input:not(:last-child) {
 section:not(:last-child) {
   padding: 0 0 50px 0;
 }
+main {
+  padding-top: 100px;
+}
+.wrapper {
+  max-width: 1167px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 25px;
+  position: relative;
+}
+.customSpinner{
+  height='96'
+  width='96'
+  color='grey'
+
+}

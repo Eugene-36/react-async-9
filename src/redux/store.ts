@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import {
   persistStore,
   persistReducer,
@@ -21,10 +22,9 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
-
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistReducer<any, any>(authPersistConfig, authReducer),
     contacts: contactsReducer,
     filters: selectNameFilter,
   },
@@ -36,11 +36,8 @@ export const store = configureStore({
     }),
   devTools: process.env.NODE_ENV === 'development',
 });
+
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>(); // Export a hook that can be reused to resolve types
+
 export const persistor = persistStore(store);
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsReducer,
-//     filters: selectNameFilter,
-//     auth: authReducer,
-//   },
-// });

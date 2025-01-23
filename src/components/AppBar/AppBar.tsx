@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigation } from '../Navigation/Navigation';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { AuthNav } from '../AuthNav/AuthNav';
@@ -9,11 +8,12 @@ import css from './AppBar.module.css';
 
 export const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log('isLoggedIn', isLoggedIn);
   return (
     <header className={css.header}>
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      <div className={css.navBlock}>
+        <Navigation />
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      </div>
     </header>
   );
 };

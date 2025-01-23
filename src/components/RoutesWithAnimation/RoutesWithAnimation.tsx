@@ -16,42 +16,31 @@ export const RoutesWithAnimation = () => {
   const location = useLocation();
 
   return (
-    <Routes location={location} key={location.key}>
-      <Route path='/' element={<HomePage />} />
-      <Route
-        path='/register'
-        element={
-          <RestrictedRoute
-            redirectTo='/contacts'
-            component={<RegisterPage />}
-          />
-        }
-      />
-      <Route
-        path='/login'
-        element={
-          <RestrictedRoute redirectTo='/contacts' component={<LoginPage />} />
-        }
-      />
-      <Route
-        path='/contacts'
-        element={
-          <PrivateRoute redirectTo='/login' component={<PhoneBookPage />} />
-        }
-      />
-      {/* <section>
-    <AddContactForm />
-  </section>
-  {isLoading && !error && <b>Request in progress...</b>}
-  <section>
-    <SearchBox />
-  </section>
-  <section>
-    <ContactList />
-  </section>
-  <section>
-    <RegisterForm />
-  </section> */}
-    </Routes>
+    <main>
+      <Routes location={location} key={location.key}>
+        <Route path='/' element={<HomePage />} />
+        <Route
+          path='/register'
+          element={
+            <RestrictedRoute
+              redirectTo='/contacts'
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <RestrictedRoute redirectTo='/contacts' component={<LoginPage />} />
+          }
+        />
+        <Route
+          path='/contacts'
+          element={
+            <PrivateRoute redirectTo='/login' component={<PhoneBookPage />} />
+          }
+        />
+      </Routes>
+    </main>
   );
 };

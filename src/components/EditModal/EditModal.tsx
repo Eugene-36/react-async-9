@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/contacts/operations';
+import { useAppDispatch } from '../../redux/store';
 import * as Yup from 'yup';
 
 import s from './EditModal.module.css';
@@ -16,6 +16,11 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   },
+};
+
+type FormData = {
+  id: string;
+  updatedData: object;
 };
 // ========
 const validationSchema = Yup.object({
@@ -34,7 +39,7 @@ export function ModalComponent({ currentId }) {
     setIsOpen(false);
   }
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -42,10 +47,13 @@ export function ModalComponent({ currentId }) {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      const payload = { id: currentId, updatedData: values };
+      const payload: FormData = {
+        id: currentId,
+        updatedData: values,
+      };
+
       dispatch(updateContact(payload));
       resetForm();
-      console.log('Edit data', values);
     },
   });
   return (

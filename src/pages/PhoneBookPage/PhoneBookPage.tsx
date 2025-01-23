@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../redux/hooks';
 import DocumentTitle from '../../components/DocumentTitle';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { selectIsLoading } from '../../redux/contacts/selectors';
@@ -10,7 +11,7 @@ import { ContactList } from '../../ContactList';
 import { motion } from 'framer-motion';
 import { animations } from '../../animation.tsx';
 export default function ContactBookPage() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
@@ -28,14 +29,20 @@ export default function ContactBookPage() {
         className='home component'
       >
         <section>
-          <AddContactForm />
+          <div className='wrapper'>
+            <AddContactForm />
+          </div>
         </section>
 
         <section>
-          <SearchBox />
+          <div className='wrapper'>
+            <SearchBox />
+          </div>
         </section>
         <section>
-          <ContactList />
+          <div className='wrapper'>
+            <ContactList />
+          </div>
         </section>
       </motion.div>
     </>
