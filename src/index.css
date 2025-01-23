@@ -24,11 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -139,10 +134,4 @@ main {
   margin: 0 auto;
   padding: 0 25px;
   position: relative;
-}
-.customSpinner{
-  height='96'
-  width='96'
-  color='grey'
-
 }

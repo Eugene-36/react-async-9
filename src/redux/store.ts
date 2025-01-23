@@ -38,6 +38,6 @@ export const store = configureStore({
 });
 
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>(); // Export a hook that can be reused to resolve types
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 
 export const persistor = persistStore(store);
