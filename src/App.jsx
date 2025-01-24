@@ -20,7 +20,10 @@ function App() {
       style={{
         textAlign: 'center',
         width: '100%',
-        display: 'block',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
       }}
     >
       Refreshing user...
