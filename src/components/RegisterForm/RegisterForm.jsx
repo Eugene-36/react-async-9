@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import './RegisterForm.module.css';
 
 // FUNCTIONS
-import { register } from '../redux/auth/operations';
+import { register } from '../../redux/auth/operations';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Full Name is required'),

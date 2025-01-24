@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectFilteredContacts } from './redux/filters/selectors';
-import { selectIsLoading } from './redux/contacts/selectors';
+import { selectFilteredContacts } from '../../redux/filters/selectors';
+import { selectIsLoading } from '../../redux/contacts/selectors';
 import { RotatingLines } from 'react-loader-spinner';
 
-import Contact from './Contact.js';
+import Contact from '../Contact/Contact.js';
 type ContactList = {
   id: number;
   name: string;

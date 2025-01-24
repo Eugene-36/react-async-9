@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import DocumentTitle from '../../components/DocumentTitle';
 
-import { animations } from '../../animation.tsx';
+import { animations } from '../../animation';
 
 export default function HomePage() {
   return (

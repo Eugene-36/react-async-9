@@ -1,7 +1,7 @@
 import DocumentTitle from '../../components/DocumentTitle';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { motion } from 'framer-motion';
-import { animations } from '../../animation.tsx';
+import { animations } from '../../animation';
 export default function LoginPage() {
   return (
     <div>

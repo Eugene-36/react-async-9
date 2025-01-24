@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // New imports
-import { Layout } from './components/Layout.tsx';
-import { selectIsRefreshing } from './redux/auth/selectors.ts';
-import { refreshUser } from './redux/auth/operations.ts';
-import { LocationProvider } from './components/LocationProvider/LocationProvider.jsx';
-import { RoutesWithAnimation } from './components/RoutesWithAnimation/RoutesWithAnimation.tsx';
+import { Layout } from './Layout.tsx';
+import { selectIsRefreshing } from '../redux/auth/selectors.ts';
+import { refreshUser } from '../redux/auth/operations.ts';
+import { LocationProvider } from './LocationProvider/LocationProvider.jsx';
+import { RoutesWithAnimation } from './RoutesWithAnimation/RoutesWithAnimation.tsx';
 
 function App() {
   const dispatch = useDispatch();

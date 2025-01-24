@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import './index.css';
-import App from './App.jsx';
+import App from './components/App.jsx';
 
 // провайдер
 import { Provider } from 'react-redux';

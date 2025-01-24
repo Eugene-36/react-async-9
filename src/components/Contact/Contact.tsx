@@ -1,7 +1,7 @@
-import { useAppDispatch } from './redux/hooks';
-import { deleteContact } from './redux/contacts/operations';
-import { useToast } from './components/ToastProvider';
-import { ModalComponent } from './components/EditModal/EditModal';
+import { useAppDispatch } from '../../redux/hooks';
+import { deleteContact } from '../../redux/contacts/operations';
+import { useToast } from '../ToastProvider';
+import { ModalComponent } from '../EditModal/EditModal';
 
 type Props = {
   name: string;

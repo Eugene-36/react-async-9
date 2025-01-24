@@ -1,7 +1,7 @@
 import DocumentTitle from '../../components/DocumentTitle';
-import RegisterForm from '../../RegisterForm/RegisterForm';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import { motion } from 'framer-motion';
-import { animations } from '../../animation.tsx';
+import { animations } from '../../animation';
 export default function RegisterPage() {
   return (
     <div>
